@@ -1,2 +1,5 @@
-from coati import Entrez 
-def fasta_downloader(  
+!pip install biopython 
+import Bio 
+from Bio import Entrez 
+
+fasta_downloader= 
