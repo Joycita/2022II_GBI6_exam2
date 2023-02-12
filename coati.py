@@ -28,7 +28,7 @@ def fasta_downloader():
         for b in id_coati:
             handle = Entrez.efetch(db="nucleotide", id=b, rettype="gb", retmode="text") 
             seq_record= SeqIO.read(handle, "genbank")
-             coati.append(seq_record)
+            coati.append(seq_record)
             SeqIO.write(coati, "data\coati.gb", "genbank")
             
 ##Segunda función
