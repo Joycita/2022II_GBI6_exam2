@@ -17,8 +17,8 @@ import os
 def fasta_downloader():
     '''
     La siguiente función con el nombre fasta_downloader nos permite ejecutar:
-    Primero con el with open se convierte el archivo coati.txt en una lista, posterior a esto se hace uso del entrez de Biopythony con la
-    finalidad de obtener la secuencia de cada identificador en el formato genbank y finalmente guardamos los datos en un documento .gb
+    Primero con el with open el archivo coati.txt que se encuentra dentro de la carpeta data las vamos abrir como coatlist y posteior a esto vamos a convertirla en lista, luego se hace uso del entrez de Biopythony con la
+    finalidad de obtener la secuencia de cada identificador en el formato genbank y finalmente guardamos los datos en un documento .gb en la carpeta data
     '''
     with open('data\coati.txt', 'r+') as coatlist:
         id_coati= coatlist.readlines()
@@ -47,7 +47,7 @@ def alignment():
 ##Tercera función
 def tree():
     """
-    La función con el nombre tree es capaz de realizar un cálculo de distancias haciendo uso del archivo aln para poder formar un árbol filogenético y su resultado poder guardarlo en un archivo pdf
+    La función con el nombre tree es capaz de realizar un cálculo de distancias haciendo uso del archivo aln para poder formar un árbol filogenético y su resultado poder guardarlo en un archivo pdf, para esto se toman encuenta las siguiente varibles como alignment, distance_calculation, dmatrix...
     """
     with open("data\coati.aln", "r") as f:
         alignment  = AlignIO.read(f,"clustal")
