@@ -1,11 +1,10 @@
-import Bio 
-from Bio import Entrez 
-from Bio import SeqIO
 from Bio import Phylo
 from Bio import SeqIO
 from Bio import AlignIO
 from Bio.Phylo.TreeConstruction import DistanceCalculator
 from Bio.Phylo.TreeConstruction import DistanceTreeConstructor
+from Bio import Entrez
+from Bio import SeqIO
 from Bio import GenBank 
 import csv 
 import re 
@@ -41,7 +40,7 @@ def alignment():
     SeqIO.write(sequences, "data\coati.fasta", "fasta")       
     clustalw_exe = r"C:\Archivos de programa (x86)\ClustalW2\clustalw2.exe"
     clustalw_cline = ClustalwCommandline(clustalw_exe, infile="data\coati.fasta")
-    assert os.path.isfile(clustalw_exe), "Clustal_W executable is missing or not found"
+    assert os.path.isfile(clustalw_exe),"Clustal_W executable is missing or not found"
     stdout, stderr = clustalw_cline()
     print(clustalw_cline)
     alignment = AlignIO.read(aln,"clustal")
