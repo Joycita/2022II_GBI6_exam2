@@ -31,21 +31,18 @@ def fasta_downloader():
             SeqIO.write(coati, "data\coati.gb", "genbank")
             
 ##Segunda función
+from Bio.Align.Applications import ClustalwCommandline
+import os
 def alignment():
     '''
     La siguiente función con el nombre alignment nos permite ejecutar:
      Primero transformar el archivo que se tiene de tipo genbank en formato fasta definiendo las variables que se presentan a continuación y posterior a esto se realizó un alineamiento de las secuencias empleando ClustalW con ayuda de la variable culstalw_exe y así poder acceder al programa ClustalW2, una vez realizado el alineamiento el resultado es guardado en los archivos coati.aln y coati.dnd.
      '''
     sequences= SeqIO.parse('data\coati.gb', 'genbank')
-    SeqIO.write(sequences, "data\coati.fasta", "fasta")       
-    clustalw_exe = r"C:\Archivos de programa (x86)\ClustalW2\clustalw2.exe"
-    clustalw_cline = ClustalwCommandline(clustalw_exe, infile="data\coati.fasta")
-    assert os.path.isfile(clustalw_exe),"Clustal_W executable is missing or not found"
-    stdout, stderr = clustalw_cline()
-    print(clustalw_cline)
-    alignment = AlignIO.read(aln,"clustal")
-    AlignIO.write(alignment, "data/coati.aln", "fasta")
-    AlignIO.write(alignment, "data/coati.dnd", "phylip-relaxed")
+    SeqIO.write(sequences, "data\coati.fasta", "fasta")  
+    cline = ClustalwCommandline("clustalw2", infile="data/coati.fasta")
+    align = AlignIO.read("data/coati.aln", "clustal")
+    print(align)
     
 ##Tercera función
 def tree():
